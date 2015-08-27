@@ -1,0 +1,29 @@
+# See j2objc-gradle's .travis.yml for explanations.
+
+language: objective-c
+os: osx
+env:
+  - USING_OS=osx USING_XCODE=6.1
+
+branches:
+  only:
+    - master
+    - /^release.*$/
+    - /^v[0-9].*$/
+
+sudo: false
+
+install:
+  - export TERM=dumb
+  - env
+  - if [ "$USING_OS" = "osx" ]; then (/usr/libexec/java_home -v 1.7 -F -V); fi
+  - java -Xmx32m -version && javac -J-Xmx32m -version
+  - pushd j2objc-gradle
+  - ./gradlew wrapper
+  - ./gradlew dependencies
+  # In this repo, building of the j2objc-gradle plugin is just preperation.
+  - ./gradlew build
+  - popd
+
+script:
+  - echo TODO Run some e2e tests.
