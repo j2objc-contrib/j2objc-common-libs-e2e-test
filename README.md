@@ -6,6 +6,8 @@ This is a subproject of [j2objc-gradle](https://github.com/j2objc-gradle)
 and [maintained by some of the same people](NOTICE). Like j2objc-gradle, this project is not affiliated
 with Google.
 
+[![Build Status](https://travis-ci.org/j2objc-contrib/j2objc-common-libs-e2e-test.svg?branch=master)](https://travis-ci.org/j2objc-contrib/j2objc-common-libs-e2e-test)
+
 **Goals**
 - Continuously verify that common open-source Java libraries can be translated and built correctly.
 - Provide a broader base of regression tests for both the J2ObjC and j2objc-gradle projects.
