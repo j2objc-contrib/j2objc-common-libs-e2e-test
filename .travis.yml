@@ -3,8 +3,7 @@
 language: objective-c
 os: osx
 env:
-  - USING_OS=osx
-  - USING_XCODE=6.1
+  - USING_OS=osx USING_XCODE=6.1
 
 branches:
   only:
