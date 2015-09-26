@@ -21,3 +21,4 @@ set -ev
 ./run-test.sh org.joda-joda-convert
 ./run-test.sh joda-time-joda-time
 ./run-test.sh org.joda-joda-primitives
+./run-test.sh org.apache.commons-commons-lang3
