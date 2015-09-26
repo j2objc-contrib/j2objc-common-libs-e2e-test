@@ -21,8 +21,9 @@ set -ev
 ./run-test.sh joda-primitives
 ./run-test.sh apache-commons-lang3
 ./run-test.sh apache-commons-collections4
-./run-test.sh apache-commons-math3
+./run-test.sh squareup-otto
 
 # May fail.
 ./run-test.sh joda-convert
 ./run-test.sh joda-time
+./run-test.sh apache-commons-math3

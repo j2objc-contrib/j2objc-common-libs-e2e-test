@@ -8,11 +8,13 @@ os: osx
 env:
   - TEST_DIR=gson
   - TEST_DIR=joda-primitives
-  - TEST_DIR=joda-convert
-  - TEST_DIR=joda-time
   - TEST_DIR=apache-commons-lang3
   - TEST_DIR=apache-commons-collections4
+  # Put expected failures at the end.
+  - TEST_DIR=joda-convert
+  - TEST_DIR=joda-time
   - TEST_DIR=apache-commons-math3
+  - TEST_DIR=squareup-otto
 
 matrix:
   allow_failures:
@@ -22,6 +24,8 @@ matrix:
     - env: TEST_DIR=joda-time
     # Requires geometry support from java.awt and also java.net.
     - env: TEST_DIR=apache-commons-math3
+    # Requires android.os.Looper
+    - env: TEST_DIR=squareup-otto
 
 branches:
   only:
