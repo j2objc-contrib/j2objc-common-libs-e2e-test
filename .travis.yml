@@ -2,8 +2,11 @@
 
 language: objective-c
 os: osx
+# Add a TEST_DIR=[directory] row for each library (or group of libraries) to test
+# Each will be run as an independent, hermetic test (in parallel when resources permit)
+# on Traivs.
 env:
-  - USING_OS=osx USING_XCODE=6.1
+  - TEST_DIR=gson
 
 branches:
   only:
@@ -16,7 +19,8 @@ sudo: false
 install:
   - export TERM=dumb
   - env
-  - if [ "$USING_OS" = "osx" ]; then (/usr/libexec/java_home -v 1.7 -F -V); fi
+  - xcrun clang -v
+  - /usr/libexec/java_home -v 1.7 -F -V
   - java -Xmx32m -version && javac -J-Xmx32m -version
   - pushd j2objc-gradle
   - ./gradlew wrapper
@@ -24,6 +28,10 @@ install:
   # In this repo, building of the j2objc-gradle plugin is just preperation.
   - ./gradlew build
   - popd
+  - pushd libraryBuilds
+  # Downloads and configures j2objc distribution.
+  - ./prep.sh
 
+# Note the install prep leaves us in the libraryBuilds directory.
 script:
-  - echo TODO Run some e2e tests.
+  - ./run-test.sh $TEST_DIR
