@@ -13,6 +13,8 @@ env:
   - TEST_DIR=joda-time-joda-time
   - TEST_DIR=org.joda-joda-primitives
   - TEST_DIR=org.apache.commons-commons-lang3
+  - TEST_DIR=org.apache.commons-commons-math3
+  - TEST_DIR=org.apache.commons-commons-collections4
 
 # Uncomment to add a library that should fail to build, along with documentation on why.
 # matrix:

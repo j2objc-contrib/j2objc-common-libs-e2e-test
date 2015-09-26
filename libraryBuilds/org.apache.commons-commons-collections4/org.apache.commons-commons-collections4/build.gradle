@@ -14,26 +14,12 @@
  * limitations under the License.
  */
 
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        // This is the build output of the plugin itself.
-        classpath fileTree(dir: '../../j2objc-gradle/build/libs', include: ['*.jar'])
-    }
+dependencies {
+    j2objcTranslation 'org.apache.commons:commons-collections4:4.0:sources'
 }
 
-subprojects {
-    apply plugin: 'java'
-    apply plugin: 'com.github.j2objccontrib.j2objcgradle'
-
-    j2objcConfig {
-        // Include Java line numbers in Objective-C source files.
-        translateArgs '-g'
-    }
-
-    repositories {
-        jcenter()
-    }
+j2objcConfig {
+    // TODO: Add unit tests.
+    testMinExpectedTests 0
+    finalConfigure()
 }

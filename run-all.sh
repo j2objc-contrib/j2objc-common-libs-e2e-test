@@ -24,3 +24,5 @@ set -euv
 ./run-test.sh libraryBuilds/joda-time-joda-time
 ./run-test.sh libraryBuilds/org.joda-joda-primitives
 ./run-test.sh libraryBuilds/org.apache.commons-commons-lang3
+./run-test.sh libraryBuilds/org.apache.commons-commons-collections4
+./run-test.sh libraryBuilds/org.apache.commons-commons-math3

@@ -14,26 +14,18 @@
  * limitations under the License.
  */
 
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        // This is the build output of the plugin itself.
-        classpath fileTree(dir: '../../j2objc-gradle/build/libs', include: ['*.jar'])
-    }
+dependencies {
+    j2objcTranslation 'org.apache.commons:commons-math3:3.5:sources'
 }
 
-subprojects {
-    apply plugin: 'java'
-    apply plugin: 'com.github.j2objccontrib.j2objcgradle'
-
-    j2objcConfig {
-        // Include Java line numbers in Objective-C source files.
-        translateArgs '-g'
+j2objcConfig {
+    translatePattern {
+        // Uses java.awt; not available in j2objc.
+        exclude '**/org/apache/commons/math3/geometry/euclidean/threed/PolyhedronsSet.java'
+        exclude '**/org/apache/commons/math3/geometry/euclidean/twod/Line.java'
     }
 
-    repositories {
-        jcenter()
-    }
+    // TODO: Add unit tests.
+    testMinExpectedTests 0
+    finalConfigure()
 }
