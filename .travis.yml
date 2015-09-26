@@ -7,6 +7,15 @@ os: osx
 # on Traivs.
 env:
   - TEST_DIR=gson
+  - TEST_DIR=joda-convert
+  - TEST_DIR=joda-time
+
+matrix:
+  allow_failures:
+    # Blocked on https://github.com/JodaOrg/joda-convert/issues/7
+    - env: TEST_DIR=joda-convert
+    # Blocked on https://github.com/JodaOrg/joda-convert/issues/7
+    - env: TEST_DIR=joda-time
 
 branches:
   only:

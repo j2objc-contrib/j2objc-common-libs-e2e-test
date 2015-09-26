@@ -18,3 +18,5 @@
 set -ev
 
 ./run-test.sh gson
+./run-test.sh joda-convert
+./run-test.sh joda-time
