@@ -7,6 +7,7 @@ os: osx
 # on Traivs.
 env:
   - TEST_DIR=gson
+  - TEST_DIR=joda-primitives
   - TEST_DIR=joda-convert
   - TEST_DIR=joda-time
 
