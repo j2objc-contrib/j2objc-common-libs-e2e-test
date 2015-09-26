@@ -19,6 +19,7 @@ set -ev
 
 ./run-test.sh gson
 ./run-test.sh joda-primitives
+./run-test.sh apache-commons-lang3
 
 # May fail.
 ./run-test.sh joda-convert
