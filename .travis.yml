@@ -11,6 +11,7 @@ env:
   - TEST_DIR=joda-convert
   - TEST_DIR=joda-time
   - TEST_DIR=apache-commons-lang3
+  - TEST_DIR=apache-commons-collections4
 
 matrix:
   allow_failures:
