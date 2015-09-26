@@ -20,7 +20,8 @@ set -ev
 ./run-test.sh gson
 ./run-test.sh joda-primitives
 ./run-test.sh apache-commons-lang3
-./run-test.sh apache-commons-collections3
+./run-test.sh apache-commons-collections4
+./run-test.sh apache-commons-math3
 
 # May fail.
 ./run-test.sh joda-convert

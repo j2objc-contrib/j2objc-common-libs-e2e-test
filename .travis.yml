@@ -12,6 +12,7 @@ env:
   - TEST_DIR=joda-time
   - TEST_DIR=apache-commons-lang3
   - TEST_DIR=apache-commons-collections4
+  - TEST_DIR=apache-commons-math3
 
 matrix:
   allow_failures:
@@ -19,6 +20,8 @@ matrix:
     - env: TEST_DIR=joda-convert
     # Blocked on https://github.com/JodaOrg/joda-convert/issues/7
     - env: TEST_DIR=joda-time
+    # Requires geometry support from java.awt and also java.net.
+    - env: TEST_DIR=apache-commons-math3
 
 branches:
   only:
