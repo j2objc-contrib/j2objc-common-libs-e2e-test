@@ -5,15 +5,17 @@ os: osx
 # Add a TEST_DIR=[directory] row for each library (or group of libraries) to test
 # Each will be run as an independent, hermetic test (in parallel when resources permit)
 # on Traivs.
+# Keep alpha sorted.
 env:
+  - TEST_DIR=apache-commons-collections4
+  - TEST_DIR=apache-commons-lang3
+  - TEST_DIR=assertj-core
   - TEST_DIR=gson
   - TEST_DIR=joda-primitives
-  - TEST_DIR=apache-commons-lang3
-  - TEST_DIR=apache-commons-collections4
   # Put expected failures at the end.
+  - TEST_DIR=apache-commons-math3
   - TEST_DIR=joda-convert
   - TEST_DIR=joda-time
-  - TEST_DIR=apache-commons-math3
   - TEST_DIR=squareup-otto
 
 matrix:
