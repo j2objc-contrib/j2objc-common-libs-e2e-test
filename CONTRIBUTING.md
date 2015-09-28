@@ -2,10 +2,10 @@ Please keep in mind that your "Contribution(s)" are submitted under
 the [Apache 2.0 License](LICENSE).
 
 #### Updating j2objc-gradle
-The version of j2objc-gradle in this repo is not automatically kept up
-to date with HEAD of https://github.com/j2objc-contrib/j2objc-gradle.
+When a new release of j2objc-gradle is made, you should update the submodule
+in the `master` branch of this repo.
 
-As a submodule, you can update j2objc-gradle by doing:
+As a submodule, you can update j2objc-gradle (to for example v0.5.0-alpha) by doing:
 
 ```shell
 # (start with a clean git working directory)
@@ -13,9 +13,10 @@ As a submodule, you can update j2objc-gradle by doing:
 git checkout -b update-plugin
 pushd j2objc-gradle
 git pull
+git reset --hard v0.5.0-alpha
 popd
 git add .
-git commit -m 'Updating j2objc-gradle to HEAD'
+git commit -m 'Updating j2objc-gradle to v0.5.0-alpha'
 # (submit the update-plugin branch as a PR to the repo)
 ```
 
@@ -23,7 +24,11 @@ Make sure this PR is seperate from any other work.  If a library you want
 to build depends on the update, work in a new branch parented to the commit
 above.
 
-TODO: [Automate this](https://github.com/j2objc-contrib/j2objc-common-libs-e2e-test/issues/33)
+In the `pluginHead` branch, Travis automatically syncs the submodule to
+HEAD of the plugin.  Note this isn't persisted in Git, it is merely configured
+by .travis.yml.  Also note that Travis does not rerun builds unless a commit
+is made to a branch - it has no way of detecting that j2objc-gradle has
+been updated.
 
 #### Library build verification
 
