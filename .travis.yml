@@ -21,7 +21,16 @@ matrix:
 
 branches:
   only:
+    # master branch's j2objc-gradle submodule should track
+    # only the latest production release of j2objc-gradle.
+    # For now it tracks a particular unreleased commit because v0.5.0-alpha
+    # must be released for depedency features to work.
+    # Maintainers must manually update submodule to the latest release.
     - master
+    # pluginHead branch is used to always test the latest
+    # HEAD of the j2objc-gradle repository.  They are automatically
+    # configured below.
+    - pluginHead
     - /^release.*$/
     - /^v[0-9].*$/
 
@@ -34,6 +43,9 @@ install:
   - /usr/libexec/java_home -v 1.7 -F -V
   - java -Xmx32m -version && javac -J-Xmx32m -version
   - pushd j2objc-gradle
+  - echo For branch $TRAVIS_BRANCH
+  # Update the plugin submodule to latest HEAD if in the appropriate branch
+  - if [[ $TRAVIS_BRANCH == pluginHead ]]; then git pull origin master; fi
   - ./gradlew wrapper
   - ./gradlew dependencies
   # In this repo, building of the j2objc-gradle plugin is just preperation.
