@@ -64,15 +64,13 @@ libraryBuilds/
             - build.gradle      - Build file containing j2objcTranslation directive for newLibrary
         - dependencyLib1/       - Soft link to ../dependencyLib1/dependencyLib1/
         - dependencyLib2/       - Soft link to ../dependencyLib2/dependencyLib2/
-        - settings.gradle       - 'include' directive for newLibrary and libraries it depends on
         - build.gradle          - Soft link to ../common/build.gradle, contains the preamble
         - gradlew               - Soft link to ../../j2objc-gradle/gradlew
         - local.properties      - Soft link to ../common/local.properties
+        - settings.gradle       - 'include' directive for newLibrary and libraries it depends on
 ```
 
 Every library newLibrary depends on must have its own similar structure as a top-level project,
 as illustrated by dependencyLib1 and 2. Note the two level directory structure above: even if
 your library has no dependencies, the build.gradle file for the library must lie 2 directories
 below libraryBuilds1/.
-
-TODO: Create a script to setup the above structure.
