@@ -17,12 +17,21 @@
 dependencies {
     j2objcTranslation 'org.joda:joda-convert:1.8:sources'
     compile 'com.google.guava:guava:18.0'
+    testCompile 'junit:junit:4.11'
 }
 
 j2objcConfig {
+    testPattern {
+        // Do not include subdirectories of convert. Their files prefixed with Test
+        // are support classes, not tests.
+        include '**/convert/Test*'
+        // https://github.com/j2objc-contrib/j2objc-common-libs-e2e-test/issues/46
+        exclude '**/TestGuavaTypeTokenStringConverter*'
+        exclude '**/TestJDKStringConverters*'
+        exclude '**/TestNumericObjectArrayStringConverterFactory*'
+        exclude '**/TestStringConvert*'
+    }
     autoConfigureDeps true
 
-    // No tests in the sources.jar.
-    testMinExpectedTests 0
     finalConfigure()
 }

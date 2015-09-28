@@ -19,9 +19,6 @@ dependencies {
 }
 
 j2objcConfig {
-    // package-info.java exists in multiple packages.
-    filenameCollisionCheck false
-
     // Almost always there are no tests provided in an external source jar.
     testMinExpectedTests 0
     finalConfigure()

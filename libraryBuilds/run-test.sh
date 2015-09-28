@@ -18,9 +18,26 @@
 set -ev
 
 TEST_DIR=$1
-echo Running test $TEST_DIR
 pushd $TEST_DIR
+
+echo Preparing test $TEST_DIR
+
+# Execute the prep.sh files within this project, if any.
+# These are often used to retrieve test sources for the libraries.
+# -L follows symbolic links correctly.
+find -L . -name prep.sh | while read PREP_SCRIPT_FILE
+do
+    pushd `dirname $PREP_SCRIPT_FILE`
+    sh prep.sh
+    popd
+done
+
+echo Running test $TEST_DIR
 ./gradlew wrapper
 ./gradlew clean
-./gradlew build
+# 2nd through last arguments are the gradle tasks to test.
+for task in "${@:2}"; do
+    ./gradlew $task --stacktrace
+done
+./gradlew assemble
 popd

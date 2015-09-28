@@ -14,11 +14,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Fail if anything fails.
-set -ev
+set -v
+rm -rf test-repo
+rm -rf src/test
+rm -rf src
 
-./run-test.sh com.google.code.gson-gson build
-./run-test.sh org.joda-joda-convert build
-./run-test.sh joda-time-joda-time build
-./run-test.sh org.joda-joda-primitives build
-./run-test.sh org.apache.commons-commons-lang3 build
+set -ev
+TAG=$1
+REPO=$2
+TEST_DIR_IN_REPO=$3
+git clone --depth 1 --branch $TAG $REPO test-repo
+mkdir src
+cp -R test-repo/$TEST_DIR_IN_REPO src/test

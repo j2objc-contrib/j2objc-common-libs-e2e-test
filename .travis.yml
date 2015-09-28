@@ -5,12 +5,13 @@ os: osx
 # Add a TEST_DIR=[directory] row for each library (or group of libraries) to test
 # Each will be run as an independent, hermetic test (in parallel when resources permit)
 # on Traivs.
+# TEST_TASKS specifies the Gradle tasks to run.
 env:
-  - TEST_DIR=com.google.code.gson-gson
-  - TEST_DIR=org.joda-joda-convert
-  - TEST_DIR=joda-time-joda-time
-  - TEST_DIR=org.joda-joda-primitives
-  - TEST_DIR=org.apache.commons-commons-lang3
+  - TEST_DIR=com.google.code.gson-gson TEST_TASKS=build
+  - TEST_DIR=org.joda-joda-convert TEST_TASKS=build
+  - TEST_DIR=joda-time-joda-time TEST_TASKS=build
+  - TEST_DIR=org.joda-joda-primitives TEST_TASKS=build
+  - TEST_DIR=org.apache.commons-commons-lang3 TEST_TASKS=build
 
 # Uncomment to add a library that should fail to build, along with documentation on why.
 # matrix:
@@ -44,4 +45,4 @@ install:
 
 # Note the install prep leaves us in the libraryBuilds directory.
 script:
-  - ./run-test.sh $TEST_DIR
+  - ./run-test.sh $TEST_DIR $TEST_TASKS

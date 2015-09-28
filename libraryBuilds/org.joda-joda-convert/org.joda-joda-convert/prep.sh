@@ -14,11 +14,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Fail if anything fails.
-set -ev
-
-./run-test.sh com.google.code.gson-gson build
-./run-test.sh org.joda-joda-convert build
-./run-test.sh joda-time-joda-time build
-./run-test.sh org.joda-joda-primitives build
-./run-test.sh org.apache.commons-commons-lang3 build
+../../common/prep-tests.sh v1.8 https://github.com/JodaOrg/joda-convert src/test
