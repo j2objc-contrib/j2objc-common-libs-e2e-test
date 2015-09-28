@@ -10,6 +10,7 @@ env:
   - TEST_DIR=org.joda-joda-convert
   - TEST_DIR=joda-time-joda-time
   - TEST_DIR=org.joda-joda-primitives
+  - TEST_DIR=org.apache.commons-commons-lang3
 
 matrix:
   allow_failures:
