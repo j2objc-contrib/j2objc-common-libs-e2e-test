@@ -20,3 +20,4 @@ set -ev
 ./run-test.sh com.google.code.gson-gson
 ./run-test.sh org.joda-joda-convert
 ./run-test.sh joda-time-joda-time
+./run-test.sh org.joda-joda-primitives

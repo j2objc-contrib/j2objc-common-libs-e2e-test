@@ -9,6 +9,7 @@ env:
   - TEST_DIR=com.google.code.gson-gson
   - TEST_DIR=org.joda-joda-convert
   - TEST_DIR=joda-time-joda-time
+  - TEST_DIR=org.joda-joda-primitives
 
 matrix:
   allow_failures:
