@@ -3,8 +3,8 @@
 language: objective-c
 os: osx
 # Add a TEST_DIR=[directory] row for each library (or group of libraries) to test
-# Each will be run as an independent, hermetic test on Travis (in parallel when
-# resources permit)
+# Each will be run as an independent, hermetic test (in parallel when resources permit)
+# on Traivs.
 env:
   - TEST_DIR=com.google.code.gson-gson
   - TEST_DIR=org.joda-joda-convert
@@ -14,8 +14,9 @@ env:
 
 matrix:
   allow_failures:
-    # Blocked on https://github.com/j2objc-contrib/j2objc-common-libs-e2e-test/issues/40
+    # Blocked on https://github.com/JodaOrg/joda-convert/issues/7
     - env: TEST_DIR=org.joda-joda-convert
+    # Blocked on https://github.com/JodaOrg/joda-convert/issues/7
     - env: TEST_DIR=joda-time-joda-time
 
 branches:
@@ -27,8 +28,20 @@ branches:
 sudo: false
 
 install:
+  - export TERM=dumb
+  - env
+  - xcrun clang -v
+  - /usr/libexec/java_home -v 1.7 -F -V
+  - java -Xmx32m -version && javac -J-Xmx32m -version
+  - pushd j2objc-gradle
+  - ./gradlew wrapper
+  - ./gradlew dependencies
+  # In this repo, building of the j2objc-gradle plugin is just preperation.
+  - ./gradlew build
+  - popd
   - pushd libraryBuilds
-  - ./install.sh
+  # Downloads and configures j2objc distribution.
+  - ./prep.sh
 
 # Note the install prep leaves us in the libraryBuilds directory.
 script:
