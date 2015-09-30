@@ -15,8 +15,9 @@
  */
 
 dependencies {
-    compile project(':org.joda-joda-convert')
     j2objcTranslation 'joda-time:joda-time:2.8.2:sources'
+    compile project(':org.joda-joda-convert')
+    compile 'com.google.guava:guava:18.0'
 }
 
 j2objcConfig {

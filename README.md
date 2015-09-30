@@ -6,6 +6,10 @@ This is a subproject of [j2objc-gradle](https://github.com/j2objc-gradle)
 and [maintained by some of the same people](NOTICE). Like j2objc-gradle, this project is not affiliated
 with Google.
 
+The build status of various libraries can be found
+[here](https://travis-ci.org/j2objc-contrib/j2objc-common-libs-e2e-test).
+Each library is configured in [libraryBuilds](libraryBuilds).
+
 [![Build Status](https://travis-ci.org/j2objc-contrib/j2objc-common-libs-e2e-test.svg?branch=master)](https://travis-ci.org/j2objc-contrib/j2objc-common-libs-e2e-test)
 
 **Goals**
