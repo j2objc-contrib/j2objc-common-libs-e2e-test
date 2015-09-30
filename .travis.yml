@@ -12,12 +12,11 @@ env:
   - TEST_DIR=org.joda-joda-primitives
   - TEST_DIR=org.apache.commons-commons-lang3
 
-matrix:
-  allow_failures:
-    # Blocked on https://github.com/JodaOrg/joda-convert/issues/7
-    - env: TEST_DIR=org.joda-joda-convert
-    # Blocked on https://github.com/JodaOrg/joda-convert/issues/7
-    - env: TEST_DIR=joda-time-joda-time
+# Uncomment to add a library that should fail to build, along with documentation on why.
+# matrix:
+#   allow_failures:
+#     # Blocked on (github issue url)
+#     - env: TEST_DIR=com.example-library
 
 branches:
   only:
