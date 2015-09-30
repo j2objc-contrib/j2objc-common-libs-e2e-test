@@ -16,9 +16,12 @@
 
 dependencies {
     j2objcTranslation 'org.joda:joda-convert:1.8:sources'
+    compile 'com.google.guava:guava:18.0'
 }
 
 j2objcConfig {
+    autoConfigureDeps true
+
     // No tests in the sources.jar.
     testMinExpectedTests 0
     finalConfigure()
