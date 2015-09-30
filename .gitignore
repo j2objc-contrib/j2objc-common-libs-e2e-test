@@ -6,3 +6,7 @@ gradle-app.setting
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
+
+# Don't save away IntelliJ config, except code-style which all commits must follow.
+.idea/*
+!.idea/codeStyleSettings.xml

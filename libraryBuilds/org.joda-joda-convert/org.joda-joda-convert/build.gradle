@@ -15,7 +15,7 @@
  */
 
 dependencies {
-    j2objcTranslation 'org.joda:joda-convert:1.7:sources'
+    j2objcTranslation 'org.joda:joda-convert:1.8:sources'
 }
 
 j2objcConfig {
