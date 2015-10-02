@@ -17,8 +17,8 @@
 # Fail if anything fails.
 set -ev
 
-./run-test.sh com.google.code.gson-gson build
-./run-test.sh org.joda-joda-convert build
-./run-test.sh joda-time-joda-time build
-./run-test.sh org.joda-joda-primitives build
-./run-test.sh org.apache.commons-commons-lang3 build
+./run-test.sh com.google.code.gson-gson
+./run-test.sh org.joda-joda-convert
+./run-test.sh joda-time-joda-time
+./run-test.sh org.joda-joda-primitives
+./run-test.sh org.apache.commons-commons-lang3

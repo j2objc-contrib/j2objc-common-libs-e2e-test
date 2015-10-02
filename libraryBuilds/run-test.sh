@@ -35,9 +35,5 @@ done
 echo Running test $TEST_DIR
 ./gradlew wrapper
 ./gradlew clean
-# 2nd through last arguments are the gradle tasks to test.
-for task in "${@:2}"; do
-    ./gradlew $task --stacktrace
-done
-./gradlew assemble
+./gradlew build --stacktrace
 popd
