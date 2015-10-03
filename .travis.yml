@@ -32,12 +32,6 @@ install:
   - xcrun clang -v
   - /usr/libexec/java_home -v 1.7 -F -V
   - java -Xmx32m -version && javac -J-Xmx32m -version
-  - pushd j2objc-gradle
-  - ./gradlew wrapper
-  - ./gradlew dependencies
-  # In this repo, building of the j2objc-gradle plugin is just preperation.
-  - ./gradlew build
-  - popd
   - pushd libraryBuilds
   # Downloads and configures j2objc distribution.
   - ./prep.sh
