@@ -19,9 +19,6 @@ dependencies {
 }
 
 j2objcConfig {
-    // package-info.java in multiple packages.
-    filenameCollisionCheck false
-
     // Blocked on https://github.com/j2objc-contrib/j2objc-gradle/issues/465
     // to support test-sources.jar.
     testMinExpectedTests 0

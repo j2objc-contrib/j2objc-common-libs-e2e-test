@@ -14,26 +14,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Fail if anything fails.
+set -v
+rm -rf test-repo
+rm -rf src/test
+rm -rf src
+
 set -ev
-
-TEST_DIR=$1
-pushd $TEST_DIR
-
-echo Preparing test $TEST_DIR
-
-# Execute the prep.sh files within this project, if any.
-# These are often used to retrieve test sources for the libraries.
-# -L follows symbolic links correctly.
-find -L . -name prep.sh | while read PREP_SCRIPT_FILE
-do
-    pushd `dirname $PREP_SCRIPT_FILE`
-    sh prep.sh
-    popd
-done
-
-echo Running test $TEST_DIR
-./gradlew wrapper
-./gradlew clean
-./gradlew build --stacktrace
-popd
+TAG=$1
+REPO=$2
+TEST_DIR_IN_REPO=$3
+git clone --depth 1 --branch $TAG $REPO test-repo
+mkdir src
+cp -R test-repo/$TEST_DIR_IN_REPO src/test
