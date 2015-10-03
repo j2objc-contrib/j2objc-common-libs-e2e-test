@@ -17,10 +17,12 @@
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
     }
     dependencies {
-        // This is the build output of the plugin itself.
-        classpath fileTree(dir: '../../j2objc-gradle/build/libs', include: ['*.jar'])
+        classpath 'gradle.plugin.com.github.j2objccontrib.j2objcgradle:j2objc-gradle:0.4.3-alpha'
     }
 }
 
