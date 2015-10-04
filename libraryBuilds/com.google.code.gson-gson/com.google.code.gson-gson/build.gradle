@@ -16,10 +16,20 @@
 
 dependencies {
     j2objcTranslation 'com.google.code.gson:gson:2.3.1:sources'
+
+    // If prep.sh is run, corresponding tests will be in src/test/java.
+    testCompile 'junit:junit:4.12'
+}
+
+test {
+    // https://github.com/j2objc-contrib/j2objc-common-libs-e2e-test/issues/35
+    exclude 'com/google/gson/functional/ThrowableFunctionalTest**'
 }
 
 j2objcConfig {
-    // Almost always there are no tests provided in an external source jar.
-    testMinExpectedTests 0
+    testPattern {
+        // https://github.com/j2objc-contrib/j2objc-common-libs-e2e-test/issues/35
+        exclude 'com/google/gson/functional/ThrowableFunctionalTest**'
+    }
     finalConfigure()
 }
