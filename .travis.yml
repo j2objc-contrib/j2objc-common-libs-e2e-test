@@ -13,12 +13,15 @@ env:
   - TEST_DIR=joda-time-joda-time
   - TEST_DIR=org.joda-joda-primitives
   - TEST_DIR=org.apache.commons-commons-lang3
+  - TEST_DIR=com.fasterxml.jackson.core
 
 # Uncomment to add a library that should fail to build, along with documentation on why.
-# matrix:
-#   allow_failures:
-#     # Blocked on (github issue url)
-#     - env: TEST_DIR=libraryBuilds/com.example-library
+matrix:
+  allow_failures:
+      # Blocked on (github issue url)
+#     - env: TEST_DIR=com.example-library
+      # Blocked on: update of j2objc with this issue fixed: https://github.com/google/j2objc/issues/639
+    - env: TEST_DIR=com.fasterxml.jackson.core
 
 branches:
   only:
