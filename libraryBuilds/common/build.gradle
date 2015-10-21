@@ -27,6 +27,9 @@ buildscript {
 subprojects {
     apply plugin: 'java'
     apply plugin: 'com.github.j2objccontrib.j2objcgradle'
+    
+    // Include Java line numbers in Objective-C source files.
+    translateArgs '-g'
 
     repositories {
         jcenter()
