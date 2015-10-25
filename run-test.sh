@@ -14,8 +14,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Must be run from the root directory
+
 # Fail if anything fails.
-set -ev
+set -euv
+
+if [[ "$PWD" =~ libraryBuilds ]]; then
+   echo "Should be run from project root and not libraryBuilds directory"
+   exit 1
+fi
 
 TEST_DIR=$1
 pushd $TEST_DIR
@@ -27,13 +34,15 @@ echo Preparing test $TEST_DIR
 # -L follows symbolic links correctly.
 find -L . -name prep.sh | while read PREP_SCRIPT_FILE
 do
-    pushd `dirname $PREP_SCRIPT_FILE`
-    sh prep.sh
-    popd
+  pushd `dirname $PREP_SCRIPT_FILE`
+  sh prep.sh
+  popd
 done
 
 echo Running test $TEST_DIR
 ./gradlew wrapper
 ./gradlew clean
 ./gradlew build --stacktrace
+
+# $TEST_DIR
 popd
