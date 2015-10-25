@@ -18,7 +18,7 @@ env:
 # matrix:
 #   allow_failures:
 #     # Blocked on (github issue url)
-#     - env: TEST_DIR=com.example-library
+#     - env: TEST_DIR=libraryBuilds/com.example-library
 
 branches:
   only:
@@ -35,21 +35,7 @@ before_install:
   - ./j2objc-gradle/install-osx-jdk7.sh
 
 install:
-  - export TERM=dumb
-  - env
-  - xcrun clang -v
-  - /usr/libexec/java_home -v 1.7 -F -V
-  - java -Xmx32m -version && javac -J-Xmx32m -version
-  - pushd j2objc-gradle
-  - ./gradlew wrapper
-  - ./gradlew dependencies
-  # In this repo, building of the j2objc-gradle plugin is just preperation.
-  - ./gradlew build
-  - popd
-  - pushd libraryBuilds
-  # Downloads and configures j2objc distribution.
-  - ./prep.sh
+  - ./install.sh
 
-# Note the install prep leaves us in the libraryBuilds directory.
 script:
-  - ./run-test.sh $TEST_DIR
+  - ./run-test.sh libraryBuilds/$TEST_DIR

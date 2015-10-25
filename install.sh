@@ -14,11 +14,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Fail if anything fails.
-set -ev
+# Must be run from the root directory
 
-./run-test.sh com.google.code.gson-gson
-./run-test.sh org.joda-joda-convert
-./run-test.sh joda-time-joda-time
-./run-test.sh org.joda-joda-primitives
-./run-test.sh org.apache.commons-commons-lang3
+# Fail if anything fails
+set -euv
+
+export TERM=dumb
+env
+xcrun clang -v
+
+/usr/libexec/java_home -v 1.7 -F -V
+java -Xmx32m -version && javac -J-Xmx32m -version
+
+# In this repo, building of the j2objc-gradle plugin is just preperation.
+pushd j2objc-gradle
+./gradlew wrapper
+./gradlew dependencies
+./gradlew build
+popd
+
+# Download and configures j2objc distribution.
+./install-j2objc.sh
