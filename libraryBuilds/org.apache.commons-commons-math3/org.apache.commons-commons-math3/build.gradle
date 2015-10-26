@@ -21,9 +21,13 @@ dependencies {
 j2objcConfig {
     translatePattern {
         // Uses java.awt; not available in j2objc.
-        exclude '**/org/apache/commons/math3/geometry/euclidean/threed/PolyhedronsSet.java'
-        exclude '**/org/apache/commons/math3/geometry/euclidean/twod/Line.java'
+        exclude '**/org/apache/commons/math3/geometry/euclidean/threed/**'
+        exclude '**/org/apache/commons/math3/geometry/euclidean/twod/**'
+        exclude '**/org/apache/commons/math3/geometry/spherical/oned/**'
+        exclude '**/org/apache/commons/math3/geometry/spherical/twod/**'
     }
+
+    extraObjcCompilerArgs += "-Wno-incompatible-pointer-types"
 
     // TODO: Add unit tests.
     testMinExpectedTests 0
