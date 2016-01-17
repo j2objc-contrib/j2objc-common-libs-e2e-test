@@ -36,4 +36,12 @@ subprojects {
     repositories {
         jcenter()
     }
+
+    test {
+        testLogging {
+            // Provide full exception info on failure, instead
+            // of just pointing to an HTML file.
+            exceptionFormat 'full'
+        }
+    }
 }
